@@ -11,7 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.jokesapp.databinding.ActivityHostBinding
 
@@ -72,7 +72,7 @@ class HostActivity : AppCompatActivity() {
     }
 
     private fun initNavigation() {
-        val navController = findNavController(this, R.id.navController)
+        val navController = findNavController(R.id.navController)
         NavigationUI.setupWithNavController(binding.navView, navController)
     }
 

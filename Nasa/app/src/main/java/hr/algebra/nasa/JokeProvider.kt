@@ -16,11 +16,11 @@ private const val PATH = "jokes"
 val JOKE_PROVIDER_CONTENT_URI: Uri = "content://$AUTHORITY/$PATH".toUri()
 
 private const val JOKES = 10
-private const val JOKE_ID = 20
+private const val JOKE_ITEM_ID = 20
 
 private val URI_MATCHER = with(UriMatcher(UriMatcher.NO_MATCH)) {
     addURI(AUTHORITY, PATH, JOKES)
-    addURI(AUTHORITY, "$PATH/#", JOKE_ID)
+    addURI(AUTHORITY, "$PATH/#", JOKE_ITEM_ID)
     this
 }
 
@@ -31,7 +31,7 @@ class JokeProvider : ContentProvider() {
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
         when (URI_MATCHER.match(uri)) {
             JOKES -> return repository.delete(selection, selectionArgs)
-            JOKE_ID -> {
+            JOKE_ITEM_ID -> {
                 val id = uri.lastPathSegment
                 if (id != null) {
                     return repository.delete("${Joke::_id.name}=?", arrayOf(id))
@@ -43,7 +43,7 @@ class JokeProvider : ContentProvider() {
 
     override fun getType(uri: Uri): String = when (URI_MATCHER.match(uri)) {
         JOKES -> "vnd.android.cursor.dir/vnd.$AUTHORITY.$PATH"
-        JOKE_ID -> "vnd.android.cursor.item/vnd.$AUTHORITY.$PATH"
+        JOKE_ITEM_ID -> "vnd.android.cursor.item/vnd.$AUTHORITY.$PATH"
         else -> throw IllegalArgumentException("Wrong URI")
     }
 
@@ -73,7 +73,7 @@ class JokeProvider : ContentProvider() {
     ): Int {
         when (URI_MATCHER.match(uri)) {
             JOKES -> return repository.update(values, selection, selectionArgs)
-            JOKE_ID -> {
+            JOKE_ITEM_ID -> {
                 val id = uri.lastPathSegment
                 if (id != null) {
                     return repository.update(values, "${Joke::_id.name}=?", arrayOf(id))

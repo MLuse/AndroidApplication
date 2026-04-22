@@ -96,12 +96,5 @@ inline fun <reified T : Activity> Context.startActivity(key: String, value: Long
     }
 )
 
-inline fun <reified T : Activity> Context.startActivity(key: String, value: Int) = startActivity(
-    Intent(this, T::class.java).apply {
-        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        putExtra(key, value)
-    }
-)
-
 inline fun <reified T : BroadcastReceiver> Context.sendBroadcast() =
     sendBroadcast(Intent(this, T::class.java))

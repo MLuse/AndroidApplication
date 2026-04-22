@@ -12,15 +12,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
-
 class JokeFetcher(private val context: Context) {
 
     private val jokeApi: JokeApi = Retrofit.Builder()
         .baseUrl(API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create<JokeApi>()
+        .create(JokeApi::class.java)
 
     fun fetchItems(count: Int = 10) {
         CoroutineScope(Dispatchers.IO).launch {
