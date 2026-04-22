@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menuItems"
-        android:title="@string/items"
-        android:icon="@drawable/items"/>
+        android:id="@+id/menuJokes"
+        android:icon="@drawable/ic_jokes"
+        android:title="@string/jokes" />
 
     <item
-        android:id="@+id/menuAbout"
-        android:title="@string/about"
-        android:icon="@drawable/about"/>
+        android:id="@+id/menuFavorites"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/favorites" />
+
+    <item
+        android:id="@+id/menuCategories"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/categories" />
 
 </menu>

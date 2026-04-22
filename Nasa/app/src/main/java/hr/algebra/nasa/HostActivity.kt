@@ -1,46 +1,36 @@
-package hr.algebra.nasa
+package com.example.jokesapp
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
-import hr.algebra.nasa.databinding.ActivityHostBinding
+import com.example.jokesapp.databinding.ActivityHostBinding
 
 class HostActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHostBinding
 
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        handleTransition()
         binding = ActivityHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initHamburgerMenu()
         initNavigation()
-    }
-
-    private fun handleTransition() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            overrideActivityTransition(
-                OVERRIDE_TRANSITION_OPEN,
-                android.R.anim.fade_in,
-                android.R.anim.fade_out
-            )
-        } else {
-            @Suppress("DEPRECATION")
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        }
+        requestNotificationPermissionIfNeeded()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -54,13 +44,9 @@ class HostActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> {
-                toggleDrawer()
-            }
-            R.id.miExit -> {
-                exitApp()
-            }
+        when (item.itemId) {
+            android.R.id.home -> toggleDrawer()
+            R.id.miExit -> exitApp()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -69,16 +55,16 @@ class HostActivity : AppCompatActivity() {
         AlertDialog.Builder(this).apply {
             setTitle(R.string.exit)
             setMessage(getString(R.string.do_you_really_want_to_exit_an_app))
-            setIcon(R.drawable.exit)
+            setIcon(android.R.drawable.ic_dialog_alert)
             setCancelable(true)
             setNegativeButton(getString(R.string.cancel), null)
-            setPositiveButton("OK") { _, _ -> finish() }
+            setPositiveButton(getString(R.string.ok)) { _, _ -> finish() }
             show()
         }
     }
 
     private fun toggleDrawer() {
-        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawers()
         } else {
             binding.drawerLayout.openDrawer(GravityCompat.START)
@@ -86,7 +72,16 @@ class HostActivity : AppCompatActivity() {
     }
 
     private fun initNavigation() {
-        val navController = findNavController(this, R.id.navController)
+        val navController = findNavController(R.id.navController)
         NavigationUI.setupWithNavController(binding.navView, navController)
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
 }
