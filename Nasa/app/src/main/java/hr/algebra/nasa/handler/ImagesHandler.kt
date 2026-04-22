@@ -1,8 +1,8 @@
-package hr.algebra.nasa.handler
+package com.example.jokesapp.handler
 
 import android.content.Context
 import android.util.Log
-import hr.algebra.nasa.factory.createHttpUrlCon
+import com.example.jokesapp.factory.createHttpUrlCon
 import java.io.File
 import java.net.HttpURLConnection
 import java.nio.file.Files

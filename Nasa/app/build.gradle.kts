@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "hr.algebra.nasa"
-    compileSdk = 36
+    namespace = "com.example.jokesapp"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "hr.algebra.nasa"
+        applicationId = "com.example.jokesapp"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -39,7 +39,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -53,11 +52,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // retrofit
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.converter.gson)
-    // picasso
-    implementation(libs.picasso)
-    implementation(libs.picasso.transformations)
 }

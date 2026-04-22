@@ -1,16 +1,23 @@
 <resources>
-    <string name="app_name">Nasa</string>
-    <string name="please_wait">Please wait</string>
-    <string name="no_internet">No internet</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="application_made_by_algebra_students">Application made by Algebra students</string>
-    <string name="items">Items</string>
-    <string name="about">About</string>
+    <string name="app_name">Jokes App</string>
+    <string name="please_wait">Loading jokes…</string>
+    <string name="no_internet">No internet connection available.</string>
+    <string name="jokes">Jokes</string>
+    <string name="favorites">Favorites</string>
+    <string name="categories">Categories</string>
     <string name="exit">Exit</string>
-    <string name="do_you_really_want_to_exit_an_app">Do you really want to exit an app?</string>
+    <string name="do_you_really_want_to_exit_an_app">Do you really want to exit the app?</string>
     <string name="cancel">Cancel</string>
-    <string name="date">Date</string>
-    <string name="title">Title</string>
-    <string name="explanation">Explanation</string>
+    <string name="ok">OK</string>
+    <string name="category">Category</string>
+    <string name="language">Language</string>
+    <string name="joke">Joke</string>
+    <string name="share_joke">Share joke</string>
+    <string name="favorite_toggle">Toggle favorite</string>
+    <string name="share_action">Share</string>
+    <string name="daily_joke_title">Daily joke ready</string>
+    <string name="daily_joke_text">Tap to open your latest jokes.</string>
+    <string name="daily_joke_channel">Daily Jokes</string>
+    <string name="favorites_empty">No favorite jokes yet.</string>
+    <string name="available_categories">Available categories</string>
 </resources>

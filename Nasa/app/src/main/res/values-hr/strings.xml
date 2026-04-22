@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Aplikacija Šale</string>
+    <string name="please_wait">Učitavanje šala…</string>
+    <string name="no_internet">Nema internetske veze.</string>
+    <string name="jokes">Šale</string>
+    <string name="favorites">Favoriti</string>
+    <string name="categories">Kategorije</string>
+    <string name="exit">Izlaz</string>
+    <string name="do_you_really_want_to_exit_an_app">Želite li stvarno izaći iz aplikacije?</string>
+    <string name="cancel">Odustani</string>
+    <string name="ok">U redu</string>
+    <string name="category">Kategorija</string>
+    <string name="language">Jezik</string>
+    <string name="joke">Šala</string>
+    <string name="share_joke">Podijeli šalu</string>
+    <string name="favorite_toggle">Uključi ili isključi favorit</string>
+    <string name="share_action">Podijeli</string>
+    <string name="daily_joke_title">Dnevna šala je spremna</string>
+    <string name="daily_joke_text">Dodirnite za otvaranje najnovijih šala.</string>
+    <string name="daily_joke_channel">Dnevne šale</string>
+    <string name="favorites_empty">Još nema omiljenih šala.</string>
+    <string name="available_categories">Dostupne kategorije</string>
+</resources>

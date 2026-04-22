@@ -1,4 +1,4 @@
-package hr.algebra.nasa.factory
+package com.example.jokesapp.factory
 
 import java.net.HttpURLConnection
 import java.net.URL
